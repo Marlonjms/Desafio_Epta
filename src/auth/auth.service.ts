@@ -15,15 +15,18 @@ export class AuthService {
       where: { email },
     });
 
-    if (!user || !bcrypt.compareSync(password, user.password)) {
-      throw new UnauthorizedException('Credenciais inválidas');
-    }
+    if (!user) throw new UnauthorizedException('Credenciais inválidas');
+
+    const valid = await bcrypt.compare(password, user.password);
+    if (!valid) throw new UnauthorizedException('Credenciais inválidas');
+
+    const payload = {
+      sub: user.id,
+      role: user.role,
+    };
 
     return {
-      token: this.jwtService.sign({
-        sub: user.id,
-        role: user.role,
-      }),
+      access_token: this.jwtService.sign(payload),
     };
   }
 }
