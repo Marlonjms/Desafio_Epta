@@ -70,7 +70,7 @@ vendedor@teste.com
 123456
 
 admin@teste.com
-12345
+123456
 ```
 
 No front-end, honestamente, até o momento implementei apenas o consumo da API de login.
