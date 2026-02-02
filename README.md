@@ -63,6 +63,16 @@ VITE_API_URL="http://localhost:3000"
 npm run dev
 ```
 
+## 1. Usuários de Teste
+
+```
+vendedor@teste.com
+123456
+
+admin@teste.com
+12345
+```
+
 No front-end, honestamente, até o momento implementei apenas o consumo da API de login.
 Portanto, para facilitar os testes e a avaliação das APIs, exportei toda a coleção do Postman relacionada ao projeto, compactei em um arquivo `.zip` e disponibilizei no Drive. Dessa forma, quem for avaliar pode importar a coleção no Postman e testar todas as rotas diretamente.
 
