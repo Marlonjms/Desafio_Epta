@@ -17,6 +17,14 @@ CREATE TABLE "User" (
 );
 
 -- CreateTable
+CREATE TABLE "MotivoReprovacao" (
+    "id" TEXT NOT NULL,
+    "descricao" TEXT NOT NULL,
+
+    CONSTRAINT "MotivoReprovacao_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
 CREATE TABLE "Vistoria" (
     "id" TEXT NOT NULL,
     "cliente" TEXT NOT NULL,
@@ -34,20 +42,13 @@ CREATE TABLE "Vistoria" (
 );
 
 -- CreateTable
-CREATE TABLE "MotivoReprovacao" (
-    "id" TEXT NOT NULL,
-    "descricao" TEXT NOT NULL,
-
-    CONSTRAINT "MotivoReprovacao_pkey" PRIMARY KEY ("id")
-);
-
--- CreateTable
 CREATE TABLE "Notificacao" (
     "id" TEXT NOT NULL,
+    "titulo" TEXT NOT NULL,
     "mensagem" TEXT NOT NULL,
     "lida" BOOLEAN NOT NULL DEFAULT false,
+    "dataCriacao" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "usuarioId" TEXT NOT NULL,
-    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT "Notificacao_pkey" PRIMARY KEY ("id")
 );

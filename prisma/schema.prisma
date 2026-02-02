@@ -55,22 +55,17 @@ model Vistoria {
 
   comentario String?
   createdAt  DateTime @default(now())
-
-  // 🔹 Adicione esta linha para a relação inversa
-  notificacoes Notificacao[]  // Notificações relacionadas a essa vistoria
 }
 
 model Notificacao {
-  id         String    @id @default(uuid())
-  usuarioId  String
-  vistoriaId String?   // nullable
-  tipo       String?   // nullable
-  mensagem   String
-  lida       Boolean   @default(false)
-  createdAt  DateTime  @default(now())
-
-  usuario    User      @relation(fields: [usuarioId], references: [id])
-  vistoria   Vistoria? @relation(fields: [vistoriaId], references: [id])
+  id          String   @id @default(uuid())
+  titulo      String
+  mensagem    String
+  lida        Boolean  @default(false)
+  dataCriacao DateTime @default(now())
+  
+  usuarioId   String
+  usuario     User     @relation(fields: [usuarioId], references: [id])
 }
 
 
