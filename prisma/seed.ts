@@ -4,7 +4,7 @@ import * as bcrypt from 'bcrypt';
 const prisma = new PrismaClient();
 
 async function main() {
-  console.log('🌱 Criando usuários iniciais...');
+  console.log('Criando usuários iniciais...');
 
   await prisma.user.createMany({
     data: [
@@ -23,7 +23,7 @@ async function main() {
     ],
   });
 
-  console.log('✅ Seed executado com sucesso');
+  console.log('Sed executado com sucesso');
 }
 
 main()

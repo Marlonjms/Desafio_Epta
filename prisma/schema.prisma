@@ -25,8 +25,17 @@ model User {
   password  String
   role      Role
   vistorias Vistoria[]
-  notifications Notification[]
+  notificacoes Notificacao[]
   createdAt DateTime @default(now())
+}
+
+
+
+
+model MotivoReprovacao {
+  id        String   @id @default(uuid())
+  descricao String
+  vistorias Vistoria[]
 }
 
 model Vistoria {
@@ -46,21 +55,23 @@ model Vistoria {
 
   comentario String?
   createdAt  DateTime @default(now())
+
+  // 🔹 Adicione esta linha para a relação inversa
+  notificacoes Notificacao[]  // Notificações relacionadas a essa vistoria
 }
 
-model MotivoReprovacao {
-  id        String   @id @default(uuid())
-  descricao String
-  vistorias Vistoria[]
+model Notificacao {
+  id         String    @id @default(uuid())
+  usuarioId  String
+  vistoriaId String?   // nullable
+  tipo       String?   // nullable
+  mensagem   String
+  lida       Boolean   @default(false)
+  createdAt  DateTime  @default(now())
+
+  usuario    User      @relation(fields: [usuarioId], references: [id])
+  vistoria   Vistoria? @relation(fields: [vistoriaId], references: [id])
 }
 
-model Notification {
-  id        String   @id @default(uuid())
-  message   String
-  read      Boolean  @default(false)
 
-  user   User   @relation(fields: [userId], references: [id])
-  userId String
 
-  createdAt DateTime @default(now())
-}

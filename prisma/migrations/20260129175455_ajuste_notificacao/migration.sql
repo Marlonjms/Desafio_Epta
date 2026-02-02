@@ -42,14 +42,14 @@ CREATE TABLE "MotivoReprovacao" (
 );
 
 -- CreateTable
-CREATE TABLE "Notification" (
+CREATE TABLE "Notificacao" (
     "id" TEXT NOT NULL,
-    "message" TEXT NOT NULL,
-    "read" BOOLEAN NOT NULL DEFAULT false,
-    "userId" TEXT NOT NULL,
+    "mensagem" TEXT NOT NULL,
+    "lida" BOOLEAN NOT NULL DEFAULT false,
+    "usuarioId" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
-    CONSTRAINT "Notification_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "Notificacao_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateIndex
@@ -62,4 +62,4 @@ ALTER TABLE "Vistoria" ADD CONSTRAINT "Vistoria_vendedorId_fkey" FOREIGN KEY ("v
 ALTER TABLE "Vistoria" ADD CONSTRAINT "Vistoria_motivoId_fkey" FOREIGN KEY ("motivoId") REFERENCES "MotivoReprovacao"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Notification" ADD CONSTRAINT "Notification_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Notificacao" ADD CONSTRAINT "Notificacao_usuarioId_fkey" FOREIGN KEY ("usuarioId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
